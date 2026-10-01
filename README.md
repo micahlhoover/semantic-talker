@@ -1,5 +1,20 @@
 # SemanticTalker
 
+A browser-based semantic analysis tool.
+
+This project:
+
+- generates embeddings locally in-browser
+- analyzes semantic attributes using probe vectors
+- explores how embeddings preserve meaning
+- investigates what semantic information survives compression
+
+Built with:
+
+- Angular
+- Transformers.js
+- Mixedbread embeddings
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
 
 ## Development server
