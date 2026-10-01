@@ -1,0 +1,97 @@
+<div class="container">
+
+  <h1>Semantic Talker</h1>
+
+  <p class="subtitle">
+    Explore how semantic embeddings represent meaning.
+  </p>
+
+  <div class="input-section">
+
+    <label for="queryBox">
+      Enter text to analyze
+    </label>
+
+    <textarea
+      id="queryBox"
+      rows="8"
+      [(ngModel)]="inputText">
+    </textarea>
+
+    <button (click)="generateEmbedding()">
+      Generate Embedding
+    </button>
+
+    <h2>Try a Sample Query</h2>
+
+    <select [(ngModel)]="inputText">
+
+    <option value="How do I tell my manager I completed all required training?">
+    Training Completion
+    </option>
+
+    <option value="Explain quantum computing like I'm five.">
+    Quantum Computing
+    </option>
+
+    <option value="Build an Angular semantic search application.">
+    Semantic Search
+    </option>
+
+    <option value="My wife asked if the dishes in the dish washer are clean or dirty, but there aren't any dishes in the dishwasher.">
+    Dishwasher Question
+    </option>
+
+    </select>
+
+
+
+  </div>
+
+  <div class="status-section">
+
+    <h2>Status</h2>
+
+    <p>{{ statusMessage }}</p>
+
+  </div>
+
+
+
+  <div class="results-container">
+
+      <div class="panel">
+
+          <h2>Embedding Vector</h2>
+
+          <textarea class="squeeze"
+              readonly>
+
+              {{ embeddingText }}
+
+          </textarea>
+
+      </div>
+
+      <div class="panel">
+
+          <h2>Semantic Fingerprint</h2>
+
+          @for (result of probeResults; track result.label) {
+
+              <div>
+
+                  {{ result.label }}
+
+                  :
+                  {{ (result.similarity * 100).toFixed(1) }}%
+
+              </div>
+
+          }
+
+      </div>
+
+  </div>
+
+</div>
