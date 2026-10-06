@@ -1,97 +1,80 @@
 <div class="container">
 
-  <h1>Semantic Talker</h1>
+  <header role="banner">
+    <h1 id="site-title">Semantic Talker</h1>
+    <p class="subtitle">Explore how semantic embeddings represent meaning.</p>
+  </header>
 
-  <p class="subtitle">
-    Explore how semantic embeddings represent meaning.
-  </p>
+  <main id="main-content" role="main" aria-labelledby="site-title">
 
-  <div class="input-section">
+    <section class="input-section" aria-labelledby="input-section-label">
 
-    <label for="queryBox">
-      Enter text to analyze
-    </label>
+      <h2 id="input-section-label" class="visually-hidden">Input</h2>
 
-    <textarea
-      id="queryBox"
-      rows="8"
-      [(ngModel)]="inputText">
-    </textarea>
+      <label for="queryBox">
+        Enter text to analyze
+      </label>
 
-    <button (click)="generateEmbedding()">
-      Generate Embedding
-    </button>
+      <textarea
+        id="queryBox"
+        rows="8"
+        [(ngModel)]="inputText"
+        aria-label="Text to analyze">
+      </textarea>
 
-    <h2>Try a Sample Query</h2>
+      <button (click)="generateEmbedding()" aria-describedby="generate-desc">
+        Generate Embedding
+      </button>
+      <span id="generate-desc" class="visually-hidden">Generates a semantic embedding for the entered text</span>
 
-    <select [(ngModel)]="inputText">
+      <h3>Try a Sample Query</h3>
 
-    <option value="How do I tell my manager I completed all required training?">
-    Training Completion
-    </option>
+      <label for="sampleQueries" class="visually-hidden">Sample queries</label>
+      <select id="sampleQueries" [(ngModel)]="inputText">
 
-    <option value="Explain quantum computing like I'm five.">
-    Quantum Computing
-    </option>
+        <option value="How do I tell my manager I completed all required training?">Training Completion</option>
 
-    <option value="Build an Angular semantic search application.">
-    Semantic Search
-    </option>
+        <option value="Explain quantum computing like I'm five.">Quantum Computing</option>
 
-    <option value="My wife asked if the dishes in the dish washer are clean or dirty, but there aren't any dishes in the dishwasher.">
-    Dishwasher Question
-    </option>
+        <option value="Build an Angular semantic search application.">Semantic Search</option>
 
-    </select>
+        <option value="My wife asked if the dishes in the dish washer are clean or dirty, but there aren't any dishes in the dishwasher.">Dishwasher Question</option>
 
+      </select>
 
+    </section>
 
-  </div>
+    <aside class="status-section" role="status" aria-live="polite">
+      <h2>Status</h2>
+      <p>{{ statusMessage }}</p>
+    </aside>
 
-  <div class="status-section">
+    <section class="results-container" aria-label="Results">
 
-    <h2>Status</h2>
-
-    <p>{{ statusMessage }}</p>
-
-  </div>
-
-
-
-  <div class="results-container">
-
-      <div class="panel">
-
-          <h2>Embedding Vector</h2>
-
-          <textarea class="squeeze"
-              readonly>
-
-              {{ embeddingText }}
-
-          </textarea>
-
+      <div class="panel" role="region" aria-labelledby="embedding-title">
+        <h2 id="embedding-title">Embedding Vector</h2>
+        <textarea class="squeeze" readonly aria-readonly="true">{{ embeddingText }}</textarea>
       </div>
 
-      <div class="panel">
+      <div class="panel" role="region" aria-labelledby="fingerprint-title">
+        <h2 id="fingerprint-title">Semantic Fingerprint</h2>
 
-          <h2>Semantic Fingerprint</h2>
-
+        <div aria-live="polite">
           @for (result of probeResults; track result.label) {
-
-              <div>
-
-                  {{ result.label }}
-
-                  :
-                  {{ (result.similarity * 100).toFixed(1) }}%
-
-              </div>
-
+            <div>
+              {{ result.label }}: {{ (result.similarity * 100).toFixed(1) }}%
+            </div>
           }
+        </div>
 
       </div>
 
-  </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <p>© Semantic Talker</p>
+  </footer>
 
 </div>

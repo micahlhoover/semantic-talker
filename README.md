@@ -72,3 +72,20 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+## Accessibility (A11y) changes
+
+Summary of accessibility improvements made to increase ADA compliance:
+
+- Added a keyboard "Skip to main content" link in `src/index.html` to help keyboard and screen reader users navigate quickly to the main application.
+- Introduced semantic landmarks (`header`, `main`, `aside`, `footer`) and ARIA roles in `src/app/app.html` for clearer structure.
+- Ensured form controls have labels and added `aria-label` / `aria-describedby` where appropriate.
+- Added `aria-live="polite"` regions for status and dynamic results so screen readers announce updates.
+- Added visible focus styles and a `visually-hidden` utility class in `src/app/app.css` for keyboard accessibility.
+
+Next recommended steps:
+
+- Run automated accessibility checks (axe, Lighthouse) and address contrast or semantic issues they report.
+- Add unit/integration tests for accessibility-critical flows.
+- Review color contrast and provide high-contrast theme options if needed.
+

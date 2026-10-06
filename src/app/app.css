@@ -16,6 +16,15 @@ button {
   padding: 10px 16px;
 }
 
+/* Visible focus indicators for keyboard users */
+button:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+}
+
 .results-section {
   margin-top: 30px;
 }
@@ -50,4 +59,35 @@ textarea {
 
     height: 400px;
 
+}
+
+/* Skip link: visually hidden but visible on focus */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: #ffffff;
+  color: #005fcc;
+  border: 2px solid #005fcc;
+  z-index: 1000;
+}
+
+/* Utility: hide visually but keep accessible to screen readers */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
